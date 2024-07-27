@@ -36,10 +36,22 @@ int main()
     // printf("a: %d, b: %d, c: %d", a,b,c);
 
 
-    int a=15;
+    // int a=15 ,b=55;
     // printf("a:%d,a:%d,a:%d,a:%d",++a,a++,++a,a);
     // printf("a:%d,a:%d,a:%d,a:%d",++a,++a,++a,++a);
-    printf("a:%d,a:%d,a:%d,a:%d",++a,a,a++,++a);
+    // printf("a:%d,a:%d,a:%d,a:%d,a:%d",++a,a++,a=b,++a,a++);
 
+
+    int n,size;
+    int arr[n];
+    printf("Enter the size of array:");
+    scanf("%d",&n);
+
+
+    size=sizeof(arr);
+    printf("Size of array is:%d",size);
+
+
+    return 0;
 
     }
