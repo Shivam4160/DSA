@@ -29,7 +29,7 @@ int main()
     printf("Enter the size of second array:");
     scanf("%d", &b);
 
-    int arr[50], arr2[50];
+    int arr[a], arr2[b];
 
     for (i = 0; i < a; i++)
     {
