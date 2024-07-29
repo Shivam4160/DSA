@@ -1,48 +1,53 @@
-#include<stdio.h>
-void add(int arr[],int size)
+#include <stdio.h>
+
+void combinearr(int arr[], int arr2[], int b, int a)
 {
-    int a=1,c;
-    for (int k = 0; k < size/2; k++)
-        {   
-            c=arr[k];
-            arr[k]=arr[size-1-k];
-            arr[size-1-k]=c;
+    printf("aise a%d",a);
 
-        }
-    for (int i = 0; i <size; i++)
+    int k;
+
+    for (k = 0; k < b; k++)
     {
-
-        printf("Value of %d elment of array is:%d\n",a++,arr[i]);
-        
-    
+        arr[a++] = arr2[k];
     }
-   
+
+    printf("Combined array .\n");
+
+    for (int j = 0; j < a; j++)
+    {
+        printf("%d ", arr[j]);
+    }
+    printf("\n");
 }
 
 int main()
 {
+    int a, b, c, i, j;
+    printf("Enter the size of first array:");
+    scanf("%d", &a);
 
-    int n,size;
-    printf("Enter the size of array:");
-    scanf("%d",&n);
-    int arr[n];
-  
+    printf("Enter the size of second array:");
+    scanf("%d", &b);
 
+    int arr[50], arr2[50];
 
-    size=sizeof(arr)/sizeof(arr[0]);
- 
-
-
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < a; i++)
     {
 
-        printf("Enter the value of %d elment of array:",i);
-        scanf("%d",&arr[i]);
-    
+        printf("Enter the element at %d psition of first array:", i);
+        scanf("%d", &arr[i]);
     }
 
-    add(arr ,size);
+    printf("***************************************************************************************************************\n");
+
+    for (j = 0; j < b; j++)
+    {
+
+        printf("Enter the element at %d psition of second array:", j);
+        scanf("%d", &arr2[j]);
+    }
+
+    combinearr(arr, arr2, b, a);
 
     return 0;
-
 }
