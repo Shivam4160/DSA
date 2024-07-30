@@ -3,7 +3,7 @@
 
 void change(int arr[],int size)
 {
-    int a=1,c;
+    int a=0,c;
         c=arr[0];
     for (int k = 0; k < size; k++)
     {
@@ -11,6 +11,9 @@ void change(int arr[],int size)
 
     }
     arr[size-1]=c;
+    
+    printf("**************************************************************************");
+
      for (int i = 0; i <size; i++)
     {
 
