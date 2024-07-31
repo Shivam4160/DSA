@@ -44,7 +44,7 @@ void Search(int arr[], int element)
     }
     if (j == size)
     {
-        printf("Elemwnt %d is not in array.\n", element);
+        printf("Element %d is not in stack.\n", element);
     }
 }
 
