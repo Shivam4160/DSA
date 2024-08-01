@@ -68,11 +68,10 @@ int BinarySearch(int arr[], int element, int size)
     return -1;
 }
 
-
 void BubbleSort(int arr[], int size)
 {
 
-    int i, j, k,temp;
+    int i, j, k, temp;
     for (i = 0; i < size - 1; i++)
     {
         k = 0;
@@ -81,9 +80,9 @@ void BubbleSort(int arr[], int size)
             if (arr[j] > arr[j + 1])
             {
 
-                temp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=temp;
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
 
                 k = 1;
             }
@@ -92,6 +91,12 @@ void BubbleSort(int arr[], int size)
         if (k == 0)
             break;
     }
+    for (int l = 0; l < size; l++)
+    {
+
+        printf("%d   ", arr[l]);
+    }
+    printf("\n\n");
 }
 
 int main()
@@ -124,7 +129,7 @@ int main()
         printf("Enter your choice.");
         scanf("%d", &choice);
 
-        if (choice > 5)
+        if (choice > 6)
         {
             printf("Invelid choice.\n");
             printf("*********************************************************************************\n");
@@ -174,11 +179,8 @@ int main()
 
             printf("Sorted array.\n");
             printf("*********************************************************************************\n");
-            for (int i = 0; i < size; i++)
-            {
+            BubbleSort(arr,size);
 
-                printf("%d   ", arr[i]);
-            }
 
             break;
         case 6:
