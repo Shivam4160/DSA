@@ -14,12 +14,12 @@ int Display(int Queue[])
     else
     {
 
-        while (i != (r + 1) % Size)
+        while (i != r)
         {
             printf("%d  ", Queue[i]);
             i = (i + 1) % Size;
         }
-        // printf("%d  \n", Queue[r]);
+        printf("%d  \n", Queue[r]);
     }
 }
 int EnQueue(int Queue[], int val)
