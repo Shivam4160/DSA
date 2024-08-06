@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 void pop(int size)
 {
 
@@ -11,7 +10,7 @@ void pop(int size)
     }
 }
 
-void display(int arr[],int size)
+void display(int arr[], int size)
 {
 
     if (size > 0)
@@ -24,7 +23,7 @@ void display(int arr[],int size)
         printf("\n");
     }
 }
-void LinearSearch(int arr[], int element,int size)
+void LinearSearch(int arr[], int element, int size)
 {
 
     int j;
@@ -43,42 +42,40 @@ void LinearSearch(int arr[], int element,int size)
     }
 }
 
-int BinarySearch(int arr[],int element,int size)
+int BinarySearch(int arr[], int element, int size)
 {
-    int low,high,mid;
-    low=0;
-    high=size-1;
-   
-
-    while (low<high)
+    int low, high, mid;
+    low = 0;
+    high = size - 1;
+    if (element < low || element > high)
     {
-        mid=(low+high)/2;
-        if (arr[mid]==element)
+        return -1;
+    }
+
+    while (low < high)
+    {
+        mid = (low + high) / 2;
+        if (arr[mid] == element)
         {
             return mid;
         }
-        else if (arr[mid]<element)
+        else if (arr[mid] < element)
         {
-            low=mid+1;
+            low = mid + 1;
         }
-        else if (arr[mid]>element)
+        else if (arr[mid] > element)
         {
-            high=mid-1;
+            high = mid - 1;
         }
-        
-
-
     }
 
-
     return -1;
-
 }
 
 int main()
 {
 
-    int element, choice, size,N;
+    int element, choice, size, N;
 
     int arr[] = {-35, -30, -25, -23, -18, -7, -6, -2, -1, 0, 1, 5, 9, 11, 15, 17, 19, 27, 29, 30, 35, 39, 40, 43, 48, 49, 50};
 
@@ -94,13 +91,12 @@ int main()
         printf("Enter your choice.");
         scanf("%d", &choice);
 
-        if (choice>5)
+        if (choice > 5)
         {
             printf("Invelid choice.\n");
             printf("*********************************************************************************\n");
             continue;
         }
-        
 
         switch (choice)
         {
@@ -110,7 +106,7 @@ int main()
             break;
 
         case 2:
-            display(arr,size);
+            display(arr, size);
             break;
 
         case 3:
@@ -118,25 +114,23 @@ int main()
             printf("Enter the Element you want to search:");
             scanf("%d", &element);
 
-            LinearSearch(arr, element,size);
+            LinearSearch(arr, element, size);
             break;
         case 4:
             printf("Enter the Element you want to search:");
             scanf("%d", &element);
 
-            N=BinarySearch(arr,element,size);
+            N = BinarySearch(arr, element, size);
 
-            if(N==-1)
+            if (N == -1)
             {
 
-                printf("Element %d is not in stack.\n", element );
-
+                printf("Element %d is not in stack.\n", element);
             }
             else
             {
                 printf("Element %d is at %d position.\n", element, N);
             }
-            
 
             break;
 
