@@ -16,9 +16,9 @@ int main()
 
     int element, pos, i;
 
-    printf("Enter position \n");
+    printf("\nEnter position \n");
     scanf("%d", &pos);
-    printf("Enter element\n");
+    printf("\nEnter element\n");
     scanf("%d", &element);
 
     if (pos <= size && pos >= 0)
