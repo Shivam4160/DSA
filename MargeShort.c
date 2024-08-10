@@ -1,49 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
+int R = -1; // rear
+int F = -1; // front
 int Size;
 
-void EnQueue(int Queue[], int Size, int UB, int LB)
+void EnQueue(int Queue[])
 {
     int i;
     printf("Enter the element to be inserted: ");
     scanf("%d", &i);
-    if (UB == Size - 1)
+    if (R == Size - 1)
     {
-
-        printf("\nQueue is full\n");
+        printf("\nQueue is full.\n");
     }
-    else if (UB == -1 && LB == -1)
+    else if (R == -1 && F == -1)
     {
-        LB = 0;
-        UB = 0;
-        Queue[UB] = i;
-        printf("\nElement inserted successfully\n");
+        R++;
+        F++;
+        Queue[R] = i;
     }
-
     else
     {
-        UB++;
-        Queue[UB] = i;
-        printf("\nElement %d added successfully.\n", i);
+        R++;
+        Queue[R] = i;
+        printf("\nElement %d is added.\n", i);
     }
 }
 
-void DeQueue(int Queue[], int Size, int UB, int LB)
+void DeQueue(int Queue[])
 {
-    if (LB == -1 && UB == -1)
+    if (R == -1 && F == -1)
     {
-        printf("\nQueue is empty\n");
+
+        printf("\nQueue is empty.\n");
     }
-    else if (LB == UB)
+    else if (R == F)
     {
-        printf("\nElement %d deleted.\n", Queue[UB]);
-        LB = -1;
-        UB = -1;
+        F = -1;
+        R = -1;
+        printf("DeQueued");
     }
     else
     {
-        printf("\nElement %d deleted.\n", Queue[LB]);
-        LB++;
+        F++;
+        printf("DeQueued");
     }
 }
 void Marge(int Queue[], int LB, int Mid, int UB)
@@ -96,14 +96,14 @@ void MargeSort(int Queue[], int LB, int UB)
     if (LB < UB)
     {
         int Mid = (LB + UB) / 2;
-        MargeSort(Queue, LB, UB);
+        MargeSort(Queue, LB, Mid);
         MargeSort(Queue, LB, UB);
         Marge(Queue, LB, Mid, UB);
     }
 }
-void Display(int Queue[], int LB, int UB)
+void Display(int Queue[])
 {
-    for (int i = LB; i <= UB; i++)
+    for (int i = F; i <= R; i++)
     {
         printf("%d  ", Queue[i]);
     }
@@ -123,7 +123,7 @@ int main()
         printf("\n2.DeQueue");
         printf("\n3.MargeSort");
         printf("\n4.Display");
-        printf("\n5.Exit");
+        printf("\n5.Exit\n");
 
         printf("Enter your choice:");
         scanf("%d", &chioce);
@@ -131,19 +131,19 @@ int main()
         switch (chioce)
         {
         case 1:
-            EnQueue(Queue, Size, UB, LB);
+            EnQueue(Queue);
 
             break;
         case 2:
-            DeQueue(Queue, Size, UB, LB);
+            DeQueue(Queue);
 
             break;
         case 3:
-            MargeSort(Queue, LB, UB);
+            MargeSort(Queue, 0, Size - 1);
 
             break;
         case 4:
-            Display(Queue, LB, UB);
+            Display(Queue);
 
             break;
         case 5:
