@@ -4,30 +4,118 @@
 struct Node
 {
     int Data;
-    struct Node *ptr;
+    struct Node *Next;
 };
+
+struct Node *head = NULL;
 
 void Insert_Front(int Element)
 {
+    struct Node *ptr = head;
+    struct Node *temp = malloc(sizeof(struct Node));
+    temp->Data = Element;
+    temp->Next = head;
+    head = temp;
 }
 void Delete_Front()
 {
+    struct Node *ptr = head;
+    head = ptr->Next;
+    free(ptr);
 }
-void Insert_Mid(int Element,int Position)
+void Insert_Mid(int Element, int Position)
 {
+    struct Node *ptr = head;
+    struct Node *p;
+    struct Node *temp = malloc(sizeof(struct Node));
+
+    temp->Data = Element;
+    temp->Next = NULL;
+
+    while (ptr->Data != Position)
+    {
+        p = ptr;
+        ptr = ptr->Next;
+    }
+
+    p->Next = temp;
+    temp->Next = ptr;
 }
-void Delete_Mid(int Element,int Position)
+void Delete_Mid(int Position)
 {
+    struct Node *ptr = head;
+    struct Node *p;
+
+    while (ptr->Data != Position)
+    {
+        p = ptr;
+        ptr = ptr->Next;
+    }
+
+    p->Next = ptr->Next;
+    free(ptr);
 }
 void Insert_End(int Element)
 {
+    struct Node *ptr = head;
+
+    struct Node *temp = malloc(sizeof(struct Node));
+
+    temp->Data = Element;
+    temp->Next = NULL;
+
+    if (head == NULL)
+    {
+        head = temp;
+        return;
+    }
+
+    while (ptr->Next != NULL)
+    {
+        ptr = ptr->Next;
+    }
+    ptr->Next = temp;
+    return;
 }
 void Delete_End()
 {
+    struct Node *ptr = head;
+    struct Node *p;
+
+    if (head->Next == NULL)
+    {
+        head = NULL;
+        free(ptr);
+        return;
+    }
+
+    while (ptr->Next != NULL)
+    {
+        p = ptr;
+        ptr = ptr->Next;
+    }
+
+    p->Next = NULL;
+    free(ptr);
+    return;
 }
 
-void Display(int Element)
+void Display()
 {
+    struct Node *ptr = head;
+    if (head == NULL)
+    {
+        printf("List is empty\n");
+    }
+    else
+    {
+        while (ptr != NULL)
+        {
+            printf("%d ", ptr->Data);
+            ptr = ptr->Next;
+        }
+        printf("\n");
+    }
 }
 int main()
 {
@@ -58,39 +146,55 @@ int main()
         {
         case 1:
 
-            printf("Enter the Element you want to add from front:");
+            printf("\nEnter Element to be Inserted:");
             scanf("%d", &Element);
 
             Insert_Front(Element);
             break;
+
         case 2:
 
             Delete_Front();
+
             break;
         case 3:
-            printf("Enter the Element you want to add from front:");
+
+            Display();
+            printf("\nEnter the Data where you want to add new Data:");
+            scanf("%d", &Position);
+
+            printf("\nEnter Element to be Inserted:");
             scanf("%d", &Element);
 
-            Insert_Mid(Element,Position);
+            Insert_Mid(Element, Position);
+
             break;
 
         case 4:
 
+            printf("\nEnter the Data which you want to delete:");
+            scanf("%d", &Position);
+
             Delete_Mid(Position);
+
             break;
         case 5:
-            printf("Enter the Element you want to add from front:");
+
+            printf("\nEnter Element to be Inserted:");
             scanf("%d", &Element);
 
             Insert_End(Element);
+
             break;
         case 6:
 
             Delete_End();
+
             break;
         case 7:
 
             Display();
+
             break;
         case 8:
 
