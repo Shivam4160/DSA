@@ -9,11 +9,11 @@ struct Node
 struct Node *head = NULL;
 struct Node *tail = NULL;
 
-void Insert_End(int Data)
+void Insert_End(int element)
 {
-    struct Node *ptr = head;
+
     struct Node *temp = malloc(sizeof(struct Node));
-    temp->Data = Data;
+    temp->Data = element;
     temp->Next = head;
     if (head == NULL && tail == NULL)
     {
@@ -29,22 +29,28 @@ void Insert_End(int Data)
 void Delete_End()
 {
     struct Node *ptr = tail;
-    struct Node *p=head;
+    struct Node *p = head;
 
-    if (head->Next == NULL)
+    if (head == NULL)
+    {
+        printf("\nList is Empty!!\n");
+        return;
+    }
+    else if (head == tail)
     {
         head = NULL;
         free(ptr);
         return;
     }
 
-    while (ptr->Next != NULL)
+    while (p->Next != ptr)
     {
-        p = ptr;
-        ptr = ptr->Next;
+
+        p = p->Next;
     }
 
-    p->Next = NULL;
+    p->Next = head;
+    tail = p;
     free(ptr);
     return;
 }
@@ -64,7 +70,7 @@ void Display()
             ptr = ptr->Next;
         }
 
-            printf("%d ", ptr->Next);
+        printf("%d ", ptr->Data);
         printf("\n");
     }
 }
