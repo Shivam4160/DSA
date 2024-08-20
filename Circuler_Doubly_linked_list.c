@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+int position, element;
 
 struct Node
 {
@@ -11,10 +12,13 @@ struct Node
 struct Node *head = NULL;
 struct Node *tail = NULL;
 
-void Insert_Front(int element)
+void Insert_Front()
 {
     struct Node *ptr = head;
     struct Node *temp = malloc(sizeof(struct Node));
+
+    printf("\nEnter Element to be entered.");
+    scanf("%d", &element);
 
     temp->Data = element;
     temp->prev = NULL;
@@ -59,24 +63,35 @@ void Delete_Front()
     free(ptr);
 }
 
-void Insert_Mid(int element, int position)
+void Insert_Mid()
 {
-
-    struct Node *ptr = head;
-    struct Node *p;
-    struct Node *temp = malloc(sizeof(struct Node));
-
-    temp->Data = element;
-    temp->next = NULL;
-    temp->prev = NULL;
 
     if (head == NULL || tail == NULL)
     {
         printf("\nList is Empty...\n");
         return;
     }
+    else if (head->next == NULL)
+    {
+        printf("\nList has only one Element..Insert mid can't be done.\n ");
+        return;
+    }
     else
     {
+        struct Node *ptr = head;
+        struct Node *p;
+        struct Node *temp = malloc(sizeof(struct Node));
+
+        printf("\nEnter the Data where you want to add new Data:");
+        scanf("%d", &position);
+
+        printf("\nEnter Element to be entered.");
+        scanf("%d", &element);
+
+        temp->Data = element;
+        temp->next = NULL;
+        temp->prev = NULL;
+
         while (ptr->Data != position)
         {
             p = ptr;
@@ -91,14 +106,24 @@ void Insert_Mid(int element, int position)
 
 void Delete_Mid(int position)
 {
-    struct Node *ptr = head;
-    struct Node *p;
 
     if (head == NULL || tail == NULL)
     {
         printf("\nList is Empty...\n");
         return;
     }
+    else if (head->next == NULL)
+    {
+        printf("\nList has only one Element..Delete mid can't be done.\n");
+        return;
+    }
+
+    struct Node *ptr = head;
+    struct Node *p;
+
+    printf("\nEnter the Data which you want to delete:");
+    scanf("%d", &position);
+
     while (ptr->Data != position)
     {
         p = ptr;
@@ -111,19 +136,24 @@ void Delete_Mid(int position)
 
 void Insert_End(int element)
 {
-    struct Node *ptr = head;
-    struct Node *p;
-    struct Node *temp = malloc(sizeof(struct Node));
-
-    temp->Data = element;
-    temp->next = NULL;
-    temp->prev = NULL;
 
     if (head == NULL || tail == NULL)
     {
         printf("\nList is Empty...\n");
         return;
     }
+
+    struct Node *ptr = head;
+    struct Node *p;
+    struct Node *temp = malloc(sizeof(struct Node));
+
+    printf("\nEnter Element to be entered.");
+    scanf("%d", &element);
+
+    temp->Data = element;
+    temp->next = NULL;
+    temp->prev = NULL;
+
     while (ptr != tail)
     {
         p = ptr;
@@ -139,6 +169,13 @@ void Delete_End()
 {
     struct Node *ptr = head;
     struct Node *p;
+
+    if (head == NULL || tail == NULL)
+    {
+        printf("\nList is Empty...\n");
+        return;
+    }
+
     if (head->next == NULL)
     {
         head = NULL;
@@ -161,7 +198,6 @@ void Delete_End()
 
 void Display()
 {
-    struct Node *ptr = head;
 
     if (head == NULL)
     {
@@ -170,6 +206,9 @@ void Display()
     }
     else
     {
+
+        struct Node *ptr = head;
+
         while (ptr != tail)
         {
             printf("%d ", ptr->Data);
@@ -202,8 +241,6 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("\nEnter Element to be entered.");
-            scanf("%d", &element);
 
             Insert_Front(element);
 
@@ -214,26 +251,17 @@ int main()
 
             break;
         case 3:
-            printf("\nEnter the Data where you want to add new Data:");
-            scanf("%d", &position);
-
-            printf("\nEnter Element to be entered.");
-            scanf("%d", &element);
 
             Insert_Mid(element, position);
 
             break;
         case 4:
-            printf("\nEnter the Data which you want to delete:");
-            scanf("%d", &position);
 
             Delete_Mid(position);
 
             break;
         case 5:
 
-            printf("\nEnter Element to be entered.");
-            scanf("%d", &element);
             Insert_End(element);
 
             break;
