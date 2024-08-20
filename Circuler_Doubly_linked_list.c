@@ -224,7 +224,7 @@ int main()
 
             break;
         case 4:
-            printf("\nEnter the Data where you want to add new Data:");
+            printf("\nEnter the Data which you want to delete:");
             scanf("%d", &position);
 
             Delete_Mid(position);
